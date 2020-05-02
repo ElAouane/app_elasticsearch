@@ -45,8 +45,21 @@ execute 'fix_template' do
   command 'sudo chmod go-w /etc/elasticsearch/elasticsearch.yml'
 end
 
+package "kibana"
 
-service 'elasticsearch' do
-  supports :restart => true, :reload => true, :status => true
-  action [:enable, :start]
+template 'etc/kibana/kibana.yml' do
+  source 'kibana.yml.erb'
+  mode '666'
+  owner 'root'
+  group 'root'
 end
+
+execute 'fix_template' do
+  command 'sudo chmod go-w /etc/kibana/kibana.yml'
+end
+
+
+# service 'elasticsearch' do
+#   supports :restart => true, :reload => true, :status => true
+#   action [:enable, :start]
+# end

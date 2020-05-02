@@ -15,14 +15,22 @@ describe port(80), :skip do
   it { should_not be_listening }
 end
 
-describe service "elasticsearch" do
-  it { should be_enabled }
-end
+# describe service "elasticsearch" do
+#   it { should be_enabled }
+# end
 
 describe package('openjdk-8-jdk') do
   it { should be_installed }
 end
 
 describe package('apt-transport-https') do
+  it { should be_installed }
+end
+
+# describe service "kibana" do
+#   it { should be_enabled }
+# end
+
+describe package('kibana') do
   it { should be_installed }
 end
