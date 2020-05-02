@@ -45,7 +45,9 @@ execute 'fix_template' do
   command 'sudo chmod go-w /etc/elasticsearch/elasticsearch.yml'
 end
 
-package "kibana"
+package "kibana" do
+  action :install
+end
 
 template 'etc/kibana/kibana.yml' do
   source 'kibana.yml.erb'
